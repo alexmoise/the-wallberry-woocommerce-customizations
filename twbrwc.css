@@ -1,6 +1,10 @@
 /** 
  * CSS Styles for The Wallberry Woocommerce customizations plugin
- * Version 1.0.0
+ * Version 1.0.2
  * (version above is equal with main plugin file version when this file was updated)
  */
 
+h1.blog-title {
+    margin: 20px 0;
+    margin: 40px 0;
+}
