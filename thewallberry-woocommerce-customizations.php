@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * GitHub Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * Description: A custom plugin to add required customizations to The Wallberry Woocommerce shop and to style the front end as required. For details/troubleshooting please contact me at <a href="https://moise.pro/contact/">https://moise.pro/contact/</a>
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Alex Moise
  * Author URI: https://moise.pro
  * WC requires at least: 4.0.0
@@ -42,6 +42,35 @@ add_action( astra_primary_content_top, motwbr_add_blog_title );
 function motwbr_add_blog_title() {
 	if ( is_home() ) {
 		echo '<H1 class="blog-title">'.single_post_title( '', false ).'</H1>';
+	}
+}
+
+// Output the Category Pre-Footer in 'product_cat' pages and 'room' pages. 
+// !! Field is added with ACF plugin
+add_action( 'astra_content_after', 'motwbr_category_pre_footer_output' );
+function motwbr_category_pre_footer_output() {
+	if ( is_tax('product_cat') || is_tax('room') ) {
+		$product_cat_object = get_queried_object();
+		if(get_field( 'category_pre_footer', 'product_cat_'.$product_cat_object->term_id)) {
+			echo '<div class="category_pre_footer">';
+			the_field( 'category_pre_footer', 'product_cat_'.$product_cat_object->term_id);
+			echo '</div>';
+		}
+		
+	}
+}
+
+// Output the SHOP Page Pre-Footer 
+// !! Field is added with ACF plugin
+add_action( 'astra_content_after', 'motwbr_shop_pre_footer_output' );
+function motwbr_shop_pre_footer_output() {
+	if ( is_shop() ) {
+		$postid = get_option( 'woocommerce_shop_page_id' ); 
+		if( get_field('shop_pre_footer', $postid) ) {
+			echo '<div class="category_pre_footer">';
+			the_field( 'shop_pre_footer', $postid );
+			echo '</div>';
+		}
 	}
 }
 

@@ -1,10 +1,34 @@
 /** 
  * CSS Styles for The Wallberry Woocommerce customizations plugin
- * Version 1.0.2
+ * Version 1.0.3
  * (version above is equal with main plugin file version when this file was updated)
  */
 
 h1.blog-title {
     margin: 20px 0;
     margin: 40px 0;
+}
+
+/* Category pre-footer */
+.category_pre_footer {
+    padding: 50px 10px;
+    /* text-align: center; */
+    background-color: #a2a2a2;
+}
+.category_pre_footer p {
+    margin-bottom: 0px;
+	color: #444;
+}
+.category_pre_footer h2, 
+.category_pre_footer h3,
+.category_pre_footer h4,
+.category_pre_footer h5, 
+.category_pre_footer h6 {
+    color: white;
+}
+@media (min-width: 1260px) {	
+	.category_pre_footer {
+		padding-left: calc((100% - 1240px) / 2) !important;
+		padding-right: calc((100% - 1240px) / 2) !important;
+	}
 }
