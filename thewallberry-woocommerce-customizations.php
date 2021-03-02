@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * GitHub Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * Description: A custom plugin to add required customizations to The Wallberry Woocommerce shop and to style the front end as required. For details/troubleshooting please contact me at <a href="https://moise.pro/contact/">https://moise.pro/contact/</a>
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Alex Moise
  * Author URI: https://moise.pro
  * WC requires at least: 4.0.0
@@ -72,6 +72,31 @@ function motwbr_shop_pre_footer_output() {
 			echo '</div>';
 		}
 	}
+}
+
+// Hide all except *some* shipping methods when Free Shipping is available
+// Since the labels are hardcoded below these have to stay unchanged for this to work (maybe add a config page/option later?)
+add_filter( 'woocommerce_package_rates', 'motwbr_manage_shipping_methods', 10, 2 );
+function motwbr_manage_shipping_methods( $rates, $package ) {
+	$new_rates = array();
+	foreach ( $rates as $rate_id => $rate ) {
+		// Only modify rates if free_shipping is present.
+		if ( 'Free standard shipping' === $rate->label ) {
+			$new_rates[ $rate_id ] = $rate;
+			break;
+		}
+	}
+	if ( ! empty( $new_rates ) ) {
+		//Save local pickup if it's present.
+		foreach ( $rates as $rate_id => $rate ) {
+			if ('Express Shipping' === $rate->label ) {
+				$new_rates[ $rate_id ] = $rate;
+				break;
+			}
+		}
+		return $new_rates;
+	}
+	return $rates;
 }
 
 ?>

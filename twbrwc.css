@@ -8,6 +8,9 @@ h1.blog-title {
     margin: 20px 0;
     margin: 40px 0;
 }
+.woocommerce-products-header > h1.page-title {
+    text-align: center;
+}
 
 /* Category pre-footer */
 .category_pre_footer {
