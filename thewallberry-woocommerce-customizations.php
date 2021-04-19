@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * GitHub Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * Description: A custom plugin to add required customizations to The Wallberry Woocommerce shop and to style the front end as required. For details/troubleshooting please contact me at <a href="https://moise.pro/contact/">https://moise.pro/contact/</a>
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Alex Moise
  * Author URI: https://moise.pro
  * WC requires at least: 4.0.0
@@ -32,10 +32,16 @@ function motwbr_adding_styles() {
 
 // Remove the product price
 // add_filter( 'woocommerce_get_price_html', 'motwbr_return_false', 10 );
-add_filter( 'woocommerce_variable_price_html', 'motwbr_return_false', 10 );
+// add_filter( 'woocommerce_variable_price_html', 'motwbr_return_false', 10 );
 add_filter( 'woocommerce_grouped_price_html', 'motwbr_return_false', 10 );
 add_filter( 'woocommerce_variable_sale_price_html', 'motwbr_return_false', 10 );
 function motwbr_return_false($price) { return false; }
+
+// Change price range to show "From" instead
+add_filter( 'woocommerce_format_price_range', 'motwbr_from_price_range', 10, 3 );
+function motwbr_from_price_range( $price, $from, $to ) {
+    return sprintf( '%s: %s', 'From', wc_price( $from ) );
+} 
 
 // Add title to Blog archive page 
 add_action( astra_primary_content_top, motwbr_add_blog_title );
