@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * GitHub Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * Description: A custom plugin to add required customizations to The Wallberry Woocommerce shop and to style the front end as required. For details/troubleshooting please contact me at <a href="https://moise.pro/contact/">https://moise.pro/contact/</a>
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Alex Moise
  * Author URI: https://moise.pro
  * WC requires at least: 4.0.0
@@ -28,6 +28,12 @@ add_action( 'wp_enqueue_scripts', 'motwbr_adding_styles', 9999999 );
 function motwbr_adding_styles() {
 	wp_register_style('twbrwc-styles', plugins_url('twbrwc.css', __FILE__));
 	wp_enqueue_style('twbrwc-styles');
+}
+
+// Add Pinterest verification
+add_action( 'wp_head', 'motwbr_pinterest_verification', 0 );
+function motwbr_pinterest_verification() {
+	echo '<meta name="p:domain_verify" content="c1eb63844d1db4285e094b8ea59b8343"/>';
 }
 
 // Remove the product price
