@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * GitHub Plugin URI: https://github.com/alexmoise/the-wallberry-woocommerce-customizations
  * Description: A custom plugin to add required customizations to The Wallberry Woocommerce shop and to style the front end as required. For details/troubleshooting please contact me at <a href="https://moise.pro/contact/">https://moise.pro/contact/</a>
- * Version: 1.0.6
+ * Version: 1.0.7
  * Author: Alex Moise
  * Author URI: https://moise.pro
  * WC requires at least: 4.0.0

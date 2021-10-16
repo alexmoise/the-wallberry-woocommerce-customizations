@@ -1,6 +1,6 @@
 /** 
  * CSS Styles for The Wallberry Woocommerce customizations plugin
- * Version 1.0.3
+ * Version 1.0.7
  * (version above is equal with main plugin file version when this file was updated)
  */
 
@@ -34,4 +34,8 @@ h1.blog-title {
 		padding-left: calc((100% - 1240px) / 2) !important;
 		padding-right: calc((100% - 1240px) / 2) !important;
 	}
+}
+
+.variations_form  table.variations {
+    border: 0px transparent !important;
 }
